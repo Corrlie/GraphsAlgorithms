@@ -17,9 +17,11 @@ int main()
 	graph.addEdge(CEdge(3, 4, 5));
 	graph.addEdge(CEdge(5, 4, 7));
 
-	std::cout << "Depth First Search Algorithm: " << std::endl;
-
+	std::cout << "\nDepth First Search Algorithm: " << std::endl;
 	graph.runDepthFirstSearchAlgorithms();
+
+	std::cout << "\nTopological sort: " << std::endl;
+	graph.sortTopological();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

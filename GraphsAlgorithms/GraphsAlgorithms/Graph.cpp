@@ -38,12 +38,45 @@ void CGraph::runDepthFirstSearchAlgorithms()
 	depthFirstSearch(0, &visitedVerticesVector);
 }
 
+void CGraph::sortTopological()
+{
+	std::stack<int> topSortStack;
+	std::vector<bool> visitedVerticesVector = createIniVisitedVerticesList();
+	int numberOfVertices = visitedVerticesVector.size();
+	
+	for (int currentIndex = 0; 
+		currentIndex < numberOfVertices;
+		currentIndex++) {
+		if (!visitedVerticesVector[currentIndex]) {
+			sortTopologicalUtil(currentIndex, &visitedVerticesVector, &topSortStack);
+  		}
+	}
+	while (!topSortStack.empty()) {
+		std::cout << topSortStack.top() << " ";
+		topSortStack.pop();
+	}
+}
+
+void CGraph::sortTopologicalUtil(int currentIndex, std::vector<bool>* pVisitedVector, std::stack<int>* pTopSortStack)
+{
+	(*pVisitedVector)[currentIndex] = true;
+	std::vector<CEdge> edgesList = m_oGraph[currentIndex];
+	for (CEdge edge : edgesList) {
+		if (!(*pVisitedVector)[edge.getEndVertex()])
+		{
+			sortTopologicalUtil(edge.getEndVertex(), pVisitedVector, pTopSortStack);
+		}
+	}
+	pTopSortStack->push(currentIndex);
+
+}
+
 void CGraph::depthFirstSearch(const int& iStartPoint, std::vector<bool>* pVisitedVerticesVector)
 {
 	if (pVisitedVerticesVector == nullptr) assert(false);
 	if (!(*pVisitedVerticesVector)[iStartPoint]) {
 		(*pVisitedVerticesVector)[iStartPoint] = true;
-		std::cout << iStartPoint << std::endl;
+		std::cout << iStartPoint << " ";
 		std::vector<CEdge> edgesList = m_oGraph[iStartPoint];
 		for (CEdge edge : edgesList) {
 			depthFirstSearch(edge.getEndVertex(), pVisitedVerticesVector);

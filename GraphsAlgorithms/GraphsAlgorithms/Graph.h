@@ -5,6 +5,7 @@
 #include "set"
 #include "Edge.h"
 #include <cassert>
+#include <stack>
 
 typedef std::unordered_map<int, std::vector<CEdge>> graphType;
 
@@ -25,6 +26,7 @@ public:
 	std::vector<bool> createIniVisitedVerticesList(); 
 
 	void runDepthFirstSearchAlgorithms();
-	//void sortTopological
+	void sortTopological();
+	void sortTopologicalUtil(int currentIndex, std::vector<bool>* pVisitedVector, std::stack<int>* pTopSortStack);
 };
 
