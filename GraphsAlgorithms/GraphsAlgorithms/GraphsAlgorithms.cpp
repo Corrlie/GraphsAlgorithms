@@ -6,9 +6,6 @@
 
 int main()
 {
-	int numberOfNodes = 7;
-	std::vector<bool> visitedVerticesVector(numberOfNodes, false);
-
 	CGraph graph;
 	graph.addEdge(CEdge(0, 1, 3));
 	graph.addEdge(CEdge(0, 2, 2));
@@ -21,10 +18,8 @@ int main()
 	graph.addEdge(CEdge(5, 4, 7));
 
 	std::cout << "Depth First Search Algorithm: " << std::endl;
-	graph.depthFirstSearch(0, &visitedVerticesVector);
 
-
-
+	graph.runDepthFirstSearchAlgorithms();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
