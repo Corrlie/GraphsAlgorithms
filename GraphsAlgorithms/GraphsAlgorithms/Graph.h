@@ -26,7 +26,11 @@ public:
 	std::vector<bool> createIniVisitedVerticesList(); 
 
 	void runDepthFirstSearchAlgorithms();
+
+	std::stack<int> prepareTopSortStack();
 	void sortTopological();
 	void sortTopologicalUtil(int currentIndex, std::vector<bool>* pVisitedVector, std::stack<int>* pTopSortStack);
+	
+	void calculateShortestPathForDAGGraph();
 };
 

@@ -22,6 +22,10 @@ int main()
 
 	std::cout << "\nTopological sort: " << std::endl;
 	graph.sortTopological();
+
+	std::cout << "\nShortest Path DAG: " << std::endl;
+	graph.calculateShortestPathForDAGGraph();
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
