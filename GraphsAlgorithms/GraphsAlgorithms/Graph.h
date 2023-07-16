@@ -36,6 +36,7 @@ public:
 	
 	std::vector<int> calculateShortestPathForDAGGraph();
 
-	void dijkstraAlgorithm(int iStartPoint);
+	std::pair<std::unordered_map<int, std::vector<int>>,
+		std::vector<int>> dijkstraAlgorithm(int iStartPoint);
 };
 

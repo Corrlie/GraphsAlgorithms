@@ -23,20 +23,23 @@ int main()
 
 	std::cout << "\nDepth First Search Algorithm: " << std::endl;
 	std::vector<int> verticesAfterDepthFirstSearch = graph.runDepthFirstSearchAlgorithms();
-	UIGraphs::printResultVector(verticesAfterDepthFirstSearch);
+	UIGraphs::printResults(verticesAfterDepthFirstSearch);
 
 	std::cout << "\nTopological sort: " << std::endl;
 	std::vector<int> sortedVertices = graph.sortTopological();
-	UIGraphs::printResultVector(sortedVertices);
+	UIGraphs::printResults(sortedVertices);
 
 
 	std::cout << "\nShortest Path DAG: " << std::endl;
 	std::vector<int> shortestPathsForDAGGraph = graph.calculateShortestPathForDAGGraph();
-	UIGraphs::printResultVector(shortestPathsForDAGGraph);
+	UIGraphs::printResults(shortestPathsForDAGGraph);
 
 
 	std::cout << "\nShortest Path Dijkstra Algoritm: " << std::endl;
-	graph.dijkstraAlgorithm(0);
+	std::pair<std::unordered_map<int, std::vector<int>>,
+		std::vector<int>> pathsAndShortestDistancePair = graph.dijkstraAlgorithm(0);
+	UIGraphs::printDijskstraAlgorithmResults(pathsAndShortestDistancePair);
+
 
 }
 

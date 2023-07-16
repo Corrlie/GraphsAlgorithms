@@ -114,9 +114,12 @@ std::vector<int> CGraph::calculateShortestPathForDAGGraph()
 
 
 
-void CGraph::dijkstraAlgorithm(int iStartPoint)
+std::pair<std::unordered_map<int, std::vector<int>>,
+	std::vector<int>> CGraph::dijkstraAlgorithm(int iStartPoint)
 {
 	if (iStartPoint > getNumberOfGraphNodes()) assert(false);
+	std::pair<std::unordered_map<int, std::vector<int>>,
+		std::vector<int>> pathsAndShortestDistancePair;
 	priorityQueueDijkstraAlg priorityQueueDistanceVertex;
 	int numberOfNodes = getNumberOfGraphNodes();
 	std::vector<int> distances(numberOfNodes, INFINITY_HEX);
@@ -125,7 +128,7 @@ void CGraph::dijkstraAlgorithm(int iStartPoint)
 	std::vector<CEdge> edgesPerVertex;
 	priorityQueueDistanceVertex.push(std::make_pair(0, iStartPoint));
 	distances[iStartPoint] = 0;
-
+		
 	while (!(DataStructuresTools::areAllVectorElementsTrue(visitedList)) && !(priorityQueueDistanceVertex.empty()))
 	{
 		int currentVertexIndex = priorityQueueDistanceVertex.top().second;
@@ -142,30 +145,12 @@ void CGraph::dijkstraAlgorithm(int iStartPoint)
 				shortestPathsMap[singleEdge.getEndVertex()].push_back(currentVertexIndex);
 			}
 		}
-
 	}
 
-	std::cout << "\nDijsktra distances from start:\n";
-	for (int i = 0; i < numberOfNodes; i++) {
-		std::cout << "\n\nVertex: " << i;
-		std::cout<<" Distance:" << distances[i] << std::endl;
-		std::vector<int> pathsForVertex = shortestPathsMap[i];
-		if (pathsForVertex.size() > 0) {
-			std::cout << "Path: ";
-			for (int singleStepForPath : pathsForVertex) {
-				std::cout << singleStepForPath << " ";
-			}
-		}
-		else {
-			if (distances[i] == 0) {
-				std::cout << "The path is not needed. You are already at your destination";
-			}
-			else {
-				std::cout << "The path is not available...";
-			}
-		}
-	}
+	pathsAndShortestDistancePair.first = shortestPathsMap;
+	pathsAndShortestDistancePair.second = distances;
 
+	return pathsAndShortestDistancePair;
  }
 
 void CGraph::depthFirstSearch(const int& iStartPoint,
