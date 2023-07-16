@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Graph.h"
 #include "UIGraphs.h"
+#include "HikingTrailsZakopane.h"
 
 
 
@@ -39,6 +40,15 @@ int main()
 	std::pair<std::unordered_map<int, std::vector<int>>,
 		std::vector<int>> pathsAndShortestDistancePair = graph.dijkstraAlgorithm(0);
 	UIGraphs::printDijskstraAlgorithmResults(pathsAndShortestDistancePair);
+
+	std::cout << "\nZakopane Hiking Trails: " << std::endl;
+	HikingTrailsZakopane hikingTrailsZakopane;
+
+	UIGraphs::printDijskstraAlgorithmResultEndPointOnly(
+		hikingTrailsZakopane.getHikingTrailsGraph().dijkstraAlgorithm(KUZNICE, GIEWONT), 
+		GIEWONT
+	);
+
 
 
 }

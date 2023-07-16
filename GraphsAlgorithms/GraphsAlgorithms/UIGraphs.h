@@ -11,5 +11,8 @@ public:
 	static void printResults(const std::vector<int>& vectorToPrint);
 	static void printDijskstraAlgorithmResults(std::pair<std::unordered_map<int, std::vector<int>>,
 		std::vector<int>>);
+
+	static void printDijskstraAlgorithmResultEndPointOnly(std::pair<std::unordered_map<int, std::vector<int>>,
+		std::vector<int>>, int iEndPoint);
 };
 

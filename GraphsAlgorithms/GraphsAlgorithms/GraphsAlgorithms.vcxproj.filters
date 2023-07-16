@@ -30,6 +30,9 @@
     <ClCompile Include="UIGraphs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HikingTrailsZakopane.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Edge.h">
@@ -45,6 +48,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UIGraphs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HikingTrailsZakopane.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MacrosHikingTrailsZakopane.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -131,13 +131,16 @@
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="GraphsAlgorithms.cpp" />
+    <ClCompile Include="HikingTrailsZakopane.cpp" />
     <ClCompile Include="UIGraphs.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataStructuresTools.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="Graph.h" />
+    <ClInclude Include="HikingTrailsZakopane.h" />
     <ClInclude Include="macros.h" />
+    <ClInclude Include="MacrosHikingTrailsZakopane.h" />
     <ClInclude Include="UIGraphs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

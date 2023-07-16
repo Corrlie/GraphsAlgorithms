@@ -56,3 +56,27 @@ void UIGraphs::printDijskstraAlgorithmResults(std::pair<std::unordered_map<int, 
 	}
 
 }
+
+void UIGraphs::printDijskstraAlgorithmResultEndPointOnly(std::pair<std::unordered_map<int, std::vector<int>>,
+	std::vector<int>> resultPathsAndShortestDistancePair, int iEndPoint)
+{
+	std::cout << "Vertex: " << iEndPoint;
+	std::cout << " Distance:" << resultPathsAndShortestDistancePair.second[iEndPoint] << std::endl;
+	std::vector<int> pathsForVertex = resultPathsAndShortestDistancePair.first[iEndPoint];
+	if (pathsForVertex.size() > 0) {
+		std::cout << "Path: ";
+		for (int singleStepForPath : pathsForVertex) {
+			std::cout << singleStepForPath << " ";
+		}
+	}
+	else {
+		if (resultPathsAndShortestDistancePair.second[iEndPoint] == 0) {
+			std::cout << "The path is not needed. You are already at your destination";
+		}
+		else {
+			std::cout << "The path is not available...";
+		}
+	}
+	std::cout << std::endl;
+
+}

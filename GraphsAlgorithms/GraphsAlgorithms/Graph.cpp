@@ -115,7 +115,7 @@ std::vector<int> CGraph::calculateShortestPathForDAGGraph()
 
 
 std::pair<std::unordered_map<int, std::vector<int>>,
-	std::vector<int>> CGraph::dijkstraAlgorithm(int iStartPoint)
+	std::vector<int>> CGraph::dijkstraAlgorithm(int iStartPoint, int iEndPoint)
 {
 	if (iStartPoint > getNumberOfGraphNodes()) assert(false);
 	std::pair<std::unordered_map<int, std::vector<int>>,
@@ -133,8 +133,9 @@ std::pair<std::unordered_map<int, std::vector<int>>,
 	{
 		int currentVertexIndex = priorityQueueDistanceVertex.top().second;
 		visitedList[currentVertexIndex] = true;
+		if (iEndPoint == currentVertexIndex) break;
 		priorityQueueDistanceVertex.pop();
-
+		
 		edgesPerVertex = m_oGraph[currentVertexIndex];
 
 		for (CEdge singleEdge : edgesPerVertex) {
