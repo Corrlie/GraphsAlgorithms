@@ -26,7 +26,9 @@ int main()
 	UIGraphs::printResultVector(verticesAfterDepthFirstSearch);
 
 	std::cout << "\nTopological sort: " << std::endl;
-	graph.sortTopological();
+	std::vector<int> sortedVertices = graph.sortTopological();
+	UIGraphs::printResultVector(sortedVertices);
+
 
 	std::cout << "\nShortest Path DAG: " << std::endl;
 	graph.calculateShortestPathForDAGGraph();

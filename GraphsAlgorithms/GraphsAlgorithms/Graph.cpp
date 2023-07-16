@@ -58,14 +58,17 @@ std::stack<int> CGraph::prepareTopSortStack()
 	return topSortStack;
 }
 
-void CGraph::sortTopological()
+std::vector<int> CGraph::sortTopological()
 {
+	std::vector<int> sortedVertices;
 	std::stack<int> topSortStack = prepareTopSortStack();
 
 	while (!topSortStack.empty()) {
-		std::cout << topSortStack.top() << " ";
+		sortedVertices.push_back(topSortStack.top());
 		topSortStack.pop();
 	}
+
+	return sortedVertices;
 }
 
 void CGraph::sortTopologicalUtil(int currentIndex, std::vector<bool>* pVisitedVector, std::stack<int>* pTopSortStack)

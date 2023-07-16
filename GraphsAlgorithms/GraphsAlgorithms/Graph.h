@@ -31,7 +31,7 @@ public:
 	std::vector<int> runDepthFirstSearchAlgorithms();
 
 	std::stack<int> prepareTopSortStack();
-	void sortTopological();
+	std::vector<int> sortTopological();
 	void sortTopologicalUtil(int currentIndex, std::vector<bool>* pVisitedVector, std::stack<int>* pTopSortStack);
 	
 	void calculateShortestPathForDAGGraph();
