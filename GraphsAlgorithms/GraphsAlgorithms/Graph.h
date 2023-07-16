@@ -34,7 +34,7 @@ public:
 	std::vector<int> sortTopological();
 	void sortTopologicalUtil(int currentIndex, std::vector<bool>* pVisitedVector, std::stack<int>* pTopSortStack);
 	
-	void calculateShortestPathForDAGGraph();
+	std::vector<int> calculateShortestPathForDAGGraph();
 
 	void dijkstraAlgorithm(int iStartPoint);
 };

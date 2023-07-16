@@ -85,8 +85,9 @@ void CGraph::sortTopologicalUtil(int currentIndex, std::vector<bool>* pVisitedVe
 
 }
 
-void CGraph::calculateShortestPathForDAGGraph()
+std::vector<int> CGraph::calculateShortestPathForDAGGraph()
 {
+	std::vector<int> calculatedShortestPathsForDAG;
 	int startVertex = 0;
 	std::stack<int> topSortStack = prepareTopSortStack();
 	int numberOfNodes = (int)topSortStack.size();
@@ -104,9 +105,11 @@ void CGraph::calculateShortestPathForDAGGraph()
 		}
 	}
 
-	for (int dist : distances) {
-		std::cout << dist << " ";
+	for (int distance : distances) {
+		calculatedShortestPathsForDAG.push_back(distance);
 	}
+	
+	return calculatedShortestPathsForDAG;
 }
 
 

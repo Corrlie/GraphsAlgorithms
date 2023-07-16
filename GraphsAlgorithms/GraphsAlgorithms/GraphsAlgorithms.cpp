@@ -31,7 +31,9 @@ int main()
 
 
 	std::cout << "\nShortest Path DAG: " << std::endl;
-	graph.calculateShortestPathForDAGGraph();
+	std::vector<int> shortestPathsForDAGGraph = graph.calculateShortestPathForDAGGraph();
+	UIGraphs::printResultVector(shortestPathsForDAGGraph);
+
 
 	std::cout << "\nShortest Path Dijkstra Algoritm: " << std::endl;
 	graph.dijkstraAlgorithm(0);
