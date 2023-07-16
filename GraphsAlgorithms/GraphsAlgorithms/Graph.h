@@ -23,11 +23,12 @@ public:
 	int getNumberOfGraphNodes();
 
 	void depthFirstSearch(const int& iStartPoint, 
-		std::vector<bool>* pVisitedVerticesList);
+		std::vector<bool>* pVisitedVerticesList,
+		std::vector<int>* pVerticesVector);
 
 	std::vector<bool> createIniVisitedVerticesList(); 
 
-	void runDepthFirstSearchAlgorithms();
+	std::vector<int> runDepthFirstSearchAlgorithms();
 
 	std::stack<int> prepareTopSortStack();
 	void sortTopological();

@@ -32,10 +32,14 @@ std::vector<bool> CGraph::createIniVisitedVerticesList() {
 	return createIniVisitedVerticesList;
 }
 
-void CGraph::runDepthFirstSearchAlgorithms()
+std::vector<int> CGraph::runDepthFirstSearchAlgorithms()
 {
+	std::vector<int> verticesList;
 	std::vector<bool> visitedVerticesVector = createIniVisitedVerticesList();
-	depthFirstSearch(0, &visitedVerticesVector);
+
+	depthFirstSearch(0, &visitedVerticesVector, &verticesList);
+	
+	return verticesList;
 }
 
 std::stack<int> CGraph::prepareTopSortStack()
@@ -106,6 +110,7 @@ void CGraph::calculateShortestPathForDAGGraph()
 
 void CGraph::dijkstraAlgorithm(int iStartPoint)
 {
+	if (iStartPoint > getNumberOfGraphNodes()) assert(false);
 	priorityQueueDijkstraAlg priorityQueueDistanceVertex;
 	int numberOfNodes = getNumberOfGraphNodes();
 	std::vector<int> distances(numberOfNodes, INFINITY_HEX);
@@ -136,7 +141,8 @@ void CGraph::dijkstraAlgorithm(int iStartPoint)
 
 	std::cout << "\nDijsktra distances from start:\n";
 	for (int i = 0; i < numberOfNodes; i++) {
-		std::cout << "\n\nVertex: " << i << " distance:" << distances[i] << std::endl;
+		std::cout << "\n\nVertex: " << i;
+		std::cout<<" Distance:" << distances[i] << std::endl;
 		std::vector<int> pathsForVertex = shortestPathsMap[i];
 		if (pathsForVertex.size() > 0) {
 			std::cout << "Path: ";
@@ -145,21 +151,29 @@ void CGraph::dijkstraAlgorithm(int iStartPoint)
 			}
 		}
 		else {
-			std::cout << "The path is not needed. You are already at your destination";
+			if (distances[i] == 0) {
+				std::cout << "The path is not needed. You are already at your destination";
+			}
+			else {
+				std::cout << "The path is not available...";
+			}
 		}
 	}
 
  }
 
-void CGraph::depthFirstSearch(const int& iStartPoint, std::vector<bool>* pVisitedVerticesVector)
+void CGraph::depthFirstSearch(const int& iStartPoint,
+	std::vector<bool>* pVisitedVerticesVector,
+	std::vector<int>* pVerticesVector)
 {
-	if (pVisitedVerticesVector == nullptr) assert(false);
+	if (pVisitedVerticesVector == nullptr || 
+		pVerticesVector == nullptr) assert(false);
 	if (!(*pVisitedVerticesVector)[iStartPoint]) {
 		(*pVisitedVerticesVector)[iStartPoint] = true;
-		std::cout << iStartPoint << " ";
+		pVerticesVector->push_back(iStartPoint);
 		std::vector<CEdge> edgesList = m_oGraph[iStartPoint];
 		for (CEdge edge : edgesList) {
-			depthFirstSearch(edge.getEndVertex(), pVisitedVerticesVector);
+			depthFirstSearch(edge.getEndVertex(), pVisitedVerticesVector, pVerticesVector);
 		}
 	}
 }

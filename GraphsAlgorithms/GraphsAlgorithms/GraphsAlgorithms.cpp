@@ -3,6 +3,10 @@
 
 #include <iostream>
 #include "Graph.h"
+#include "UIGraphs.h"
+
+
+
 
 int main()
 {
@@ -18,7 +22,8 @@ int main()
 	graph.addEdge(CEdge(5, 4, 7));
 
 	std::cout << "\nDepth First Search Algorithm: " << std::endl;
-	graph.runDepthFirstSearchAlgorithms();
+	std::vector<int> verticesAfterDepthFirstSearch = graph.runDepthFirstSearchAlgorithms();
+	UIGraphs::printResultVector(verticesAfterDepthFirstSearch);
 
 	std::cout << "\nTopological sort: " << std::endl;
 	graph.sortTopological();
@@ -30,6 +35,7 @@ int main()
 	graph.dijkstraAlgorithm(0);
 
 }
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
