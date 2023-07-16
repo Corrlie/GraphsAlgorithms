@@ -2,12 +2,14 @@
 
 #include<unordered_map>
 #include <vector>
-#include "set"
-#include "Edge.h"
+#include <set>
 #include <cassert>
 #include <stack>
+#include <queue>
+#include "Edge.h"
+#include "macros.h"
+#include "DataStructuresTools.h"
 
-typedef std::unordered_map<int, std::vector<CEdge>> graphType;
 
 class CGraph
 {
@@ -32,5 +34,7 @@ public:
 	void sortTopologicalUtil(int currentIndex, std::vector<bool>* pVisitedVector, std::stack<int>* pTopSortStack);
 	
 	void calculateShortestPathForDAGGraph();
+
+	void dijkstraAlgorithm(int iStartPoint);
 };
 

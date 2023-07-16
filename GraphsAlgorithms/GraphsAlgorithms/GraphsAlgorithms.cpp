@@ -26,6 +26,9 @@ int main()
 	std::cout << "\nShortest Path DAG: " << std::endl;
 	graph.calculateShortestPathForDAGGraph();
 
+	std::cout << "\nShortest Path Dijkstra Algoritm: " << std::endl;
+	graph.dijkstraAlgorithm(0);
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
